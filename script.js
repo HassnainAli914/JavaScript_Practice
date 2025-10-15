@@ -417,14 +417,60 @@
 // ];
 // console.log(newArryObj, Object.fromEntries(newArryObj))
 
-let newObj = {
-    name: "Hassnain",
-    age: 17
-};
-let result = Object.freeze(newObj);
-newObj.roll = 1122;
-console.log(result);
+// let newObj = {
+//     name: "Hassnain",
+//     age: 17
+// };
+// let result = Object.freeze(newObj); //to stop usage of updation/deleting
+// newObj.roll = 1122; //Never Added
+// newObj.name = "Muzaffar"; //Never Changed
+// console.log(result, Object.isFrozen(newObj));
 
+// let newObj = {
+//     name: "Hassnain",
+//     age: 17
+// };
+// let result = Object.seal(newObj); //to stop usage of updation/deleting
+// newObj.roll = 1122; //Never Added
+// newObj.name = "Muzaffar"; //Values still can be change
+// console.log(result, Object.isSealed(newObj));
 
+// let newObj = {
+//     name: "Hassnain",
+//     age: 17
+// };
+// let newObj2 = {
+//     name2: "Muzaffar",
+//     age2: 21
+// };
+// let result = Object.assign(newObj, newObj2); //Merging Objs
+// console.log("Merged Data =>", result);
+// console.log(result);
+
+// let newObj = {
+//     name: "Hassnain",
+//     age: 17
+// };
+// function run(email) {
+//     console.log(`Person name is ${this.name}, age is ${this.age} and email is ${email}`);
+// };
+// run.call(newObj, "hassnain@gmail.com") //Access Obj Data in a function
+
+// let newObj = {
+//     name: "Hassnain",
+//     age: 17
+// };
+// function run(email, roll) {
+//     console.log(`Person name is ${this.name}, age is ${this.age}, roll no. is ${roll} and email is ${email}`);
+// };
+// run.apply(newObj, ["hassnain@gmail.com", "1122"]) //Access Obj Multiple Data in a function
+
+// let newObj = {
+//     name: "Hassnain",
+//     age: 17
+// };
+// for (let keys in newObj){ 
+//     console.log(keys, newObj[keys]);
+// }
 
 // // --------------------  Objects with Different Methods End --------------------
