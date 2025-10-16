@@ -850,7 +850,6 @@ listBtn.addEventListener('click', List)
 
 // Delete Listed Files
 let deleteData = document.getElementById("list");
-// let deleteData = readList;
 
 async function DeleteFile(e) {
     list.innerHTML = "";
