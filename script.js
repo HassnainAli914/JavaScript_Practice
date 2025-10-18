@@ -527,16 +527,8 @@
 //     signInWithRedirect, FacebookAuthProvider
 // } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
-// // Initialize Firebase Authentication and get a reference to the service
-// const firebaseConfig = {
-//     apiKey: "AIzaSyC4W9WjfmorIpnqomgz_D6YcGfQPImCAUo",
-//     authDomain: "fir-c315a.firebaseapp.com",
-//     projectId: "fir-c315a",
-//     storageBucket: "fir-c315a.firebasestorage.app",
-//     messagingSenderId: "141668794531",
-//     appId: "1:141668794531:web:2c48eb03e2a1fd78927f16",
-//     measurementId: "G-HYVC1MJKHX"
-// };
+// // Import configuration from other folder or Add firebaseConfig Below as written
+// import {firebaseConfig} from "/firebaseConfig.js"
 
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
@@ -675,16 +667,8 @@
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
 // import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
-// // Your web app's Firebase configuration
-// const firebaseConfig = {
-//     apiKey: "AIzaSyC4W9WjfmorIpnqomgz_D6YcGfQPImCAUo",
-//     authDomain: "fir-c315a.firebaseapp.com",
-//     projectId: "fir-c315a",
-//     storageBucket: "fir-c315a.firebasestorage.app",
-//     messagingSenderId: "141668794531",
-//     appId: "1:141668794531:web:2c48eb03e2a1fd78927f16",
-//     measurementId: "G-HYVC1MJKHX"
-// };
+// // Import configuration from other folder or Add firebaseConfig Below as written
+// import {firebaseConfig} from "/firebaseConfig.js"
 
 // // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
@@ -765,110 +749,101 @@
 
 // // --------------------  Firebase Storage --------------------
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
-import { getStorage, ref, uploadBytes, getDownloadURL, listAll, deleteObject } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-storage.js";
+// // Import the functions you need from the SDKs you need
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+// import { getStorage, ref, uploadBytes, getDownloadURL, listAll, deleteObject } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-storage.js";
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyC4W9WjfmorIpnqomgz_D6YcGfQPImCAUo",
-    authDomain: "fir-c315a.firebaseapp.com",
-    projectId: "fir-c315a",
-    storageBucket: "fir-c315a.firebasestorage.app",
-    messagingSenderId: "141668794531",
-    appId: "1:141668794531:web:2c48eb03e2a1fd78927f16",
-    measurementId: "G-HYVC1MJKHX"
-};
+// // Import configuration from other folder or Add firebaseConfig Below as written
+// import {firebaseConfig} from "/firebaseConfig.js"
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const storage = getStorage(app);
-const listRef = ref(storage, 'images/');
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+// const storage = getStorage(app);
+// const listRef = ref(storage, 'images/');
 
-// Dom Node
-let uploadBtn = document.getElementById("uploadBtn");
-let fileInput = document.getElementById("uploadImg");
-let link = document.getElementById("link");
+// // Dom Node
+// let uploadBtn = document.getElementById("uploadBtn");
+// let fileInput = document.getElementById("uploadImg");
+// let link = document.getElementById("link");
 
-// Upload Files
-async function Upload() {
-    let file = fileInput.files[0]
+// // Upload Files
+// async function Upload() {
+//     let file = fileInput.files[0]
 
-    if (!file) {
-        console.log("No file selected.");
-        return;
-    }
+//     if (!file) {
+//         console.log("No file selected.");
+//         return;
+//     }
 
-    try {
-        const fileRef = ref(storage, `images/${file.name}`);
-        console.log(fileRef);
-        const snapshot = await uploadBytes(fileRef, file);
-        const url = await getDownloadURL(snapshot.ref);
-        link.innerHTML = `Uploaded file Link: <a href="${url}" target="_blank">Click to Show Image</a>.`
-        console.log("Uploaded! File URL:", url);
+//     try {
+//         const fileRef = ref(storage, `images/${file.name}`);
+//         console.log(fileRef);
+//         const snapshot = await uploadBytes(fileRef, file);
+//         const url = await getDownloadURL(snapshot.ref);
+//         link.innerHTML = `Uploaded file Link: <a href="${url}" target="_blank">Click to Show Image</a>.`
+//         console.log("Uploaded! File URL:", url);
 
-    } catch (error) {
-        console.log(error.message);
-    }
-    List()
-};
-uploadBtn.addEventListener('click', Upload)
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+//     List()
+// };
+// uploadBtn.addEventListener('click', Upload)
 
-// List All Uploaded Files
-let listBtn = document.getElementById("listBtn");
-let list = document.getElementById("list");
+// // List All Uploaded Files
+// let listBtn = document.getElementById("listBtn");
+// let list = document.getElementById("list");
 
-async function List() {
-    list.innerHTML = "";
+// async function List() {
+//     list.innerHTML = "";
 
-    try {
-        const listA = await listAll(listRef);
-        console.log("All results:", listA);
+//     try {
+//         const listA = await listAll(listRef);
+//         console.log("All results:", listA);
 
-        // Show subfolders (prefixes)
-        listA.prefixes.forEach((folderRef) => {
-            const li = document.createElement("li");
-            li.textContent = `📁 Folder: ${folderRef.name}`;
-            list.appendChild(li);
-        });
+//         // Show subfolders (prefixes)
+//         listA.prefixes.forEach((folderRef) => {
+//             const li = document.createElement("li");
+//             li.textContent = `📁 Folder: ${folderRef.name}`;
+//             list.appendChild(li);
+//         });
 
-        // Show file items
-        for (const itemRef of listA.items) {
-            const url = await getDownloadURL(itemRef);
-            const li = document.createElement("li");
-            li.innerHTML += `📄 File: <a href="${url}" target="_blank">${itemRef.name}</a> <br> <button class="delete-btn" data-id="${itemRef.name}">Delete</button>`;
-            list.appendChild(li);
-        };
+//         // Show file items
+//         for (const itemRef of listA.items) {
+//             const url = await getDownloadURL(itemRef);
+//             const li = document.createElement("li");
+//             li.innerHTML += `📄 File: <a href="${url}" target="_blank">${itemRef.name}</a> <br> <button class="delete-btn" data-id="${itemRef.name}">Delete</button>`;
+//             list.appendChild(li);
+//         };
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+// };
+// listBtn.addEventListener('click', List)
 
-    } catch (error) {
-        console.log(error.message);
-    }
-};
-listBtn.addEventListener('click', List)
+// // Delete Listed Files
+// let deleteData = document.getElementById("list");
 
-// Delete Listed Files
-let deleteData = document.getElementById("list");
+// async function DeleteFile(e) {
+//     list.innerHTML = "";
 
-async function DeleteFile(e) {
-    list.innerHTML = "";
+//     if (e.target.classList.contains("delete-btn")) {
+//         const id = e.target.getAttribute("data-id");
 
-    if (e.target.classList.contains("delete-btn")) {
-        const id = e.target.getAttribute("data-id");
+//         try {
+//             const desertRef = ref(storage, `images/${id}`);
+//             await deleteObject(desertRef);
+//             console.log("✅ File Deleted:", id);
+//             List() //Reload List Function
 
-        try {
-            const desertRef = ref(storage, `images/${id}`);
-            await deleteObject(desertRef);
-            console.log("✅ File Deleted:", id);
-            List() //Reload List Function
-
-        } catch (error) {
-            console.log("❌ Error deleting:", error.message);
-        }
-    }
-};
-deleteData.addEventListener('click', DeleteFile)
+//         } catch (error) {
+//             console.log("❌ Error deleting:", error.message);
+//         }
+//     }
+// };
+// deleteData.addEventListener('click', DeleteFile)
 
 
 // // --------------------  Firebase Storage --------------------
